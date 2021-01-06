@@ -4,16 +4,16 @@
   overflow: hidden;
   background-color: #CCCCCC;
 }
-.card .dropdownManager .details
+.card .dropdown-manager .details
 {
   background-color: #EEEEEE;
   transition-duration: 0.5s;
 }
-.card .dropdownManager .hiddenPortionHidden
+.card .dropdown-manager .hidden-portion-hidden
 {
   margin: 0 0 -100% 0;
 }
-.card .dropdownManager .hiddenPortionShown
+.card .dropdown-manager .hidden-portion-shown
 {
   margin: 0 0 0 0;
 }
@@ -29,4 +29,72 @@
 {
   height: 24px;
   width: auto;
+}
+
+.card-header
+{
+  padding: 0;
+}
+.film-title
+{
+  margin: 0.25em;
+  font-size: 1.5em;
+}
+.film-year
+{
+  margin: 0.25em;
+  color: grey;
+  font-size: 1em;
+}
+.row
+{
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.film-banner
+{
+  width: 200px;
+}
+.ratings
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.left-display
+{
+  width: 200px;
+}
+.rating span
+{
+  margin: 5px;
+  font-weight: bold;
+}
+.rating-vert span
+{
+  font-size: 24px;
+}
+.rating-vert img
+{
+  width: 75px;
+}
+.rating-vert
+{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rating-hori img
+{
+  width: 50px;
+}
+.rating-hori
+{
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

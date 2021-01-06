@@ -33,7 +33,9 @@ class SearchResults extends React.Component
             <InteractiveCard
               title = {item["Title"]}
               key = {item["imdbID"]}
-              descr = {item["imdbID"]}
+              imdbID = {item["imdbID"]}
+              year = {item["Year"]}
+              displayDetails = {this.props.updateDetails}
             />
           );
         });
@@ -58,7 +60,6 @@ class SearchBox extends React.Component
     super(props);
     this.state = ({hasQueried: false, query: "", queryResults: ""});
     this.beginSearch = this.beginSearch.bind(this);
-    this.request = null;
   }
   async beginSearch()
   {
@@ -76,7 +77,12 @@ class SearchBox extends React.Component
     return (
       <div>
         <SearchQuery handler = {this.beginSearch}/>
-        <SearchResults hasQueried = {this.state.hasQueried} query = {this.state.query} queryResults = {this.state.queryResults}/>
+        <SearchResults
+          hasQueried = {this.state.hasQueried}
+          query = {this.state.query}
+          queryResults = {this.state.queryResults}
+          updateDetails = {this.props.updateDetails}
+        />
       </div>
     );
   }
