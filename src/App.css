@@ -1,3 +1,9 @@
+.faded
+{
+  font-style: italic;
+  color: #888888;
+}
+
 .card
 {
   height: auto;
@@ -33,28 +39,34 @@
 
 .card-header
 {
-  padding: 0;
+  padding: 0.2em 3px 0.2em 0.5em;
 }
 .film-title
 {
-  margin: 0.25em;
+  margin: 0;
   font-size: 1.5em;
 }
 .film-year
 {
-  margin: 0.25em;
+  margin: 0.25em 0.25em 0 0.25em;
   color: grey;
   font-size: 1em;
 }
-.row
+.force-hori
 {
   margin: 0;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
 }
+
+/* DETAILS */
+
 .film-banner
 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 200px;
 }
 .ratings
@@ -63,9 +75,9 @@
   flex-direction: row;
   justify-content: center;
 }
-.left-display
+.left-display .right-display
 {
-  width: 200px;
+  padding: 25px;
 }
 .rating span
 {
@@ -97,4 +109,17 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.display
+{
+  padding: 50px;
+}
+.display p
+{
+  margin-top: 0.5em;
+}
+.awards
+{
+  font-weight: bold;
+  -webkit-text-stroke: 1px #998600;
 }

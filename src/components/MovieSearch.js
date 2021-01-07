@@ -66,7 +66,7 @@ class SearchBox extends React.Component
     const query = document.getElementById("text-query").value;
     if(query.length > 0){
       var api_key = Config["API_KEY"];
-      const url = `https://www.omdbapi.com/?s=${encodeURI(query)}&apikey=${api_key}`; //API KEY LEAK BEWARE
+      const url = `https://www.omdbapi.com/?s=${encodeURI(query)}&type=movie&apikey=${api_key}`; //API KEY LEAK BEWARE
       const response = await fetch(url);
       const data = await response.json();
       this.setState({hasQueried: true, query: query, queryResults: data});

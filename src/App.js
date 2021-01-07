@@ -30,19 +30,23 @@ class App extends React.Component {
   render()
   {
     return (
-      <div className="container">
+      <div className = "container">
         <h1 className="app-header">
           Lorem Ipsum
         </h1>
         <p>Some more lorem ipsum</p>
-        <SearchBox
-          updateDetails = {this.updateDetails}
-        />
-        <Details
-          toDisplay = {this.state.hasDetails}
-          data = {this.state.data}
-        />
-      </div>
+        <div className="container">
+          <div className = "row">
+              <SearchBox
+                updateDetails = {this.updateDetails}
+              />
+          </div>
+          <Details
+            toDisplay = {this.state.hasDetails}
+            data = {this.state.data}
+          />
+        </div>
+    </div>
     );
   }
 }

@@ -20,7 +20,7 @@ class InteractiveCard extends React.Component
     return (
       <div className = "card">
         <div className = "card-header" onClick = {() => this.props.displayDetails(this.props.imdbID)}>
-          <div className = "row">
+          <div className = "force-hori">
             <h4 className = "film-title">{this.props.title}</h4>
             <p className = "film-year">({this.props.year})</p>
           </div>
