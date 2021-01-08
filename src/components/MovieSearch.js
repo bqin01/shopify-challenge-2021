@@ -1,8 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import InteractiveCard from './InteractiveCard.js'
-import SearchIcon from "../assets/search.svg"
-import Config from '../config.json'
+import InteractiveCard from './InteractiveCard.js';
+import SearchIcon from "../assets/search.svg";
+import Config from '../config.json';
+import NoImage from '../assets/noimage.png';
 
 class SearchQuery extends React.Component
 {
@@ -56,6 +57,7 @@ class SearchResults extends React.Component
               year = {item["Year"]}
               displayDetails = {this.props.updateDetails}
               currentSelection = {this.props.currentSelection}
+              currentNominations = {this.props.currentNominations}
             />
           );
         });
@@ -90,6 +92,7 @@ class SearchBox extends React.Component
       const response = await fetch(url);
       const data = await response.json();
       this.setState({hasQueried: true, query: query, queryResults: data});
+      this.props.clearDetails();
     }
   }
   render()
@@ -103,6 +106,7 @@ class SearchBox extends React.Component
           queryResults = {this.state.queryResults}
           updateDetails = {this.props.updateDetails}
           currentSelection = {this.props.currentSelection}
+          currentNominations = {this.props.currentNominations}
         />
       </div>
     );

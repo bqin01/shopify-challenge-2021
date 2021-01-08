@@ -18,9 +18,18 @@ class InteractiveCard extends React.Component
   render()
   {
     var cardClassName = "card-header";
+    var alreadyNominated = false;
+    for (const elem of this.props.currentNominations)
+    {
+      alreadyNominated = alreadyNominated || (elem["imdbID"] === this.props.imdbID);
+    }
+    if (alreadyNominated)
+    {
+      cardClassName += " card-header-nominated";
+    }
     if (this.props.imdbID === this.props.currentSelection)
     {
-        cardClassName += " card-header-selected";
+      cardClassName += " card-header-selected";
     }
     return (
       <div className = "card">

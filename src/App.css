@@ -8,6 +8,7 @@
 
 .card
 {
+  border-radius: 5px;
   height: auto;
   overflow: hidden;
 }
@@ -25,20 +26,30 @@
   width: auto;
 }
 
-.card-header-selected
-{
-  border: 2px solid #998600;
-}
+
 
 .card-header:hover
 {
-  background-color: #EEEEEE;
+  opacity: 80%;
 }
 .card-header
 {
+  border: 2px solid black;
   background-color: #CCCCCC;
   padding: 0.2em 3px 0.2em 0.5em;
   transition-duration: 0.5s;
+}
+
+.card-header-nominated
+{
+  border: 2px solid #a25e0b;
+  color: #EEEEEE;
+  background: rgb(52,12,70);
+  background: linear-gradient(117deg, rgba(52,12,70,1) 0%, rgba(129,53,160,1) 50%, rgba(49,9,62,1) 100%);
+}
+.card-header-selected
+{
+  border: 2px solid #20cb31;
 }
 .film-title
 {
@@ -160,7 +171,33 @@
 {
   margin: 1rem 0 1rem 0;
 }
+.nomination-filled
+{
+  border: 3px solid #a25e0b;
+}
 .nomination-empty
+{
+  font-size: 24px;
+}
+.nominate-button
+{
+  margin-top: 20px;
+  display: block;
+  border-radius: 5px;
+  padding: 10px 20px 10px 20px;
+  font-size: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.add-nominate-button
+{
+
+}
+.inactive-nominate-button
+{
+
+}
+.remove-nominate-button
 {
 
 }

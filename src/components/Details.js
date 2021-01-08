@@ -25,9 +25,9 @@ class Director extends React.Component
   render ()
   {
     if(this.props.director === "N/A"){
-      return <p class = "director faded">No/Unknown Director</p>
+      return <p className = "director faded">No/Unknown Director</p>
     }else{
-      return <p class = "director"><b>Directed by {this.props.director}</b></p>
+      return <p className = "director"><b>Directed by {this.props.director}</b></p>
     }
   }
 }
@@ -37,9 +37,9 @@ class Plot extends React.Component
   render ()
   {
     if(this.props.plot === "N/A"){
-      return <p class = "plot faded">Plot Not Available</p>
+      return <p className = "plot faded">Plot Not Available</p>
     }else{
-      return <p class = "plot">{this.props.plot}</p>
+      return <p className = "plot">{this.props.plot}</p>
     }
   }
 }
@@ -52,7 +52,48 @@ class Awards extends React.Component
     {
       return null;
     }else{
-      return <p class = "awards">{this.props.awards}</p>
+      return <p className = "awards">{this.props.awards}</p>
+    }
+  }
+}
+
+class NominationButton extends React.Component
+{
+  render ()
+  {
+    var alreadyNominated = false;
+    for (const elem of this.props.currentNominations)
+    {
+      alreadyNominated = alreadyNominated || (elem["imdbID"] === this.props.imdbID);
+    }
+    if (alreadyNominated)
+    {
+      return (
+        <button
+          className = "nominate-button remove-nominate-button"
+          onClick = {() => null}
+        >
+          Already Nominated
+        </button>
+      );
+    }else if (this.props.currentNominations.length >= 5){
+      return (
+        <button
+          className = "nominate-button inactive-nominate-button"
+          disabled = {true}
+        >
+          Nominations Full
+        </button>
+      );
+    }else{
+      return (
+        <button
+          className = "nominate-button add-nominate-button"
+          onClick = {() => this.props.addNomination(this.props.imdbID)}
+        >
+          Nominate me for Shoppies!
+        </button>
+      );
     }
   }
 }
@@ -110,6 +151,11 @@ class Details extends React.Component
             <Plot plot = {this.props.data["Plot"]}/>
             <Awards awards = {this.props.data["Awards"]}/>
             <button className = "imdb-link" onClick = {() => window.open("https://www.imdb.com/title/" + this.props.data["imdbID"], "_blank")}>Learn More on IMDb</button>
+            <NominationButton
+              addNomination = {this.props.addNomination}
+              imdbID = {this.props.data["imdbID"]}
+              currentNominations = {this.props.currentNominations}
+            />
           </div>
         </div>
       );
