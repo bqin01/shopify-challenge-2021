@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 .faded
 {
   font-style: italic;
@@ -8,20 +10,6 @@
 {
   height: auto;
   overflow: hidden;
-  background-color: #CCCCCC;
-}
-.card .dropdown-manager .details
-{
-  background-color: #EEEEEE;
-  transition-duration: 0.5s;
-}
-.card .dropdown-manager .hidden-portion-hidden
-{
-  margin: 0 0 -100% 0;
-}
-.card .dropdown-manager .hidden-portion-shown
-{
-  margin: 0 0 0 0;
 }
 .dropdownManager
 {
@@ -37,9 +25,20 @@
   width: auto;
 }
 
+.card-header-selected
+{
+  border: 2px solid #998600;
+}
+
+.card-header:hover
+{
+  background-color: #EEEEEE;
+}
 .card-header
 {
+  background-color: #CCCCCC;
   padding: 0.2em 3px 0.2em 0.5em;
+  transition-duration: 0.5s;
 }
 .film-title
 {
@@ -68,6 +67,18 @@
   margin-left: auto;
   margin-right: auto;
   width: 200px;
+}
+.imdb-link:hover
+{
+  background-color: #eeeeee;
+}
+.imdb-link
+{
+  transition-duration: 0.2s;
+  display: block;
+  margin-left: auto;
+  border-radius: 5px;
+  background-color: #8beff8;
 }
 .ratings
 {

@@ -109,6 +109,7 @@ class Details extends React.Component
             <Director director = {this.props.data["Director"]}/>
             <Plot plot = {this.props.data["Plot"]}/>
             <Awards awards = {this.props.data["Awards"]}/>
+            <button className = "imdb-link" onClick = {() => window.open("https://www.imdb.com/title/" + this.props.data["imdbID"], "_blank")}>Learn More on IMDb</button>
           </div>
         </div>
       );

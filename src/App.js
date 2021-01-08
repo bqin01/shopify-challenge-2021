@@ -12,7 +12,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       hasDetails: false,
-      data: null
+      data: null,
+      currentID: null
     };
     this.updateDetails = this.updateDetails.bind(this);
   }
@@ -25,7 +26,7 @@ class App extends React.Component {
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    this.setState({hasDetails: true, data: data});
+    this.setState({hasDetails: true, data: data, currentID: id});
   }
   render()
   {
@@ -39,6 +40,7 @@ class App extends React.Component {
           <div className = "row">
               <SearchBox
                 updateDetails = {this.updateDetails}
+                currentSelection = {this.state.currentID}
               />
           </div>
           <Details

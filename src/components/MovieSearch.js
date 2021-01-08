@@ -6,11 +6,30 @@ import Config from '../config.json'
 
 class SearchQuery extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+  handleKeyPress(event)
+  {
+    var charCode = (typeof event.which == "number") ? event.which : event.keyCode;
+    console.log(charCode);
+    if (charCode === 13){
+      this.props.handler();
+    }
+  }
   render()
   {
     return (
         <div className="input-group md-form form-sm form-2 pl-0">
-          <input className="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" id = "text-query"></input>
+          <input
+            className="form-control my-0 py-1"
+            type="text" placeholder="Search"
+            aria-label="Search"
+            id = "text-query"
+            onKeyPress = {this.handleKeyPress}>
+          </input>
           <div className="input-group-append" onClick = {this.props.handler}>
             <span className ="input-group-text amber lighten-3 height-cap"><img alt = "Search" src = {SearchIcon}
                 aria-hidden="true" id = "search-icon"></img></span>
@@ -36,6 +55,7 @@ class SearchResults extends React.Component
               imdbID = {item["imdbID"]}
               year = {item["Year"]}
               displayDetails = {this.props.updateDetails}
+              currentSelection = {this.props.currentSelection}
             />
           );
         });
@@ -82,6 +102,7 @@ class SearchBox extends React.Component
           query = {this.state.query}
           queryResults = {this.state.queryResults}
           updateDetails = {this.props.updateDetails}
+          currentSelection = {this.props.currentSelection}
         />
       </div>
     );
