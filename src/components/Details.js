@@ -78,18 +78,18 @@ class Details extends React.Component
       }
       return (
         <div className = "row display">
-          <div className = "left-display col-md-3">
+          <div className = "left-display col-lg-3 container">
             <img
               className = "film-banner"
               alt = {"Poster for " + this.props.data["Title"]}
               src = {(this.props.data["Poster"] === "N/A" ? NoImage : this.props.data["Poster"]) || NoImage}
             />
-            <div className = "ratings">
-              <div className = "rating rating-vert">
+            <div className = "ratings row">
+              <div className = "rating rating-vert col-sm-6">
                 <img alt = "IMBD" src = {LogoIMBD}/>
                 <span>{ratings[0] === "N/A" ? this.props.data["imdbRating"] : ratings[0]}</span>
               </div>
-              <div>
+              <div className = "col-sm-6">
                 <div className = "rating rating-hori">
                   <img alt = "Rotten Tomatoes" src = {LogoRT}/>
                   <span>{ratings[1]}</span>
@@ -101,11 +101,11 @@ class Details extends React.Component
               </div>
             </div>
           </div>
-          <div className = "right-display col-md-9">
-            <div className = "force-hori">
-              <h4 className = "film-title">{this.props.data["Title"]}</h4>
+          <div className = "right-display col-lg-9">
+            <span>
+              <span className = "film-title">{this.props.data["Title"]}</span>
               <span className = "film-year">({this.props.data["Year"]})</span>
-            </div>
+            </span>
             <Director director = {this.props.data["Director"]}/>
             <Plot plot = {this.props.data["Plot"]}/>
             <Awards awards = {this.props.data["Awards"]}/>

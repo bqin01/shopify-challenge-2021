@@ -31,7 +31,7 @@ class SearchQuery extends React.Component
             onKeyPress = {this.handleKeyPress}>
           </input>
           <div className="input-group-append" onClick = {this.props.handler}>
-            <span className ="input-group-text amber lighten-3 height-cap"><img alt = "Search" src = {SearchIcon}
+            <span className ="input-group-text height-cap"><img alt = "Search" src = {SearchIcon}
                 aria-hidden="true" id = "search-icon"></img></span>
           </div>
         </div>
@@ -95,7 +95,7 @@ class SearchBox extends React.Component
   render()
   {
     return (
-      <div>
+      <div className = "col-lg-6">
         <SearchQuery handler = {this.beginSearch}/>
         <SearchResults
           hasQueried = {this.state.hasQueried}

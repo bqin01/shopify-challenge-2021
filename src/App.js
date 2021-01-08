@@ -3,6 +3,7 @@ import React from 'react';
 import InteractiveCard from "./components/InteractiveCard.js";
 import SearchBox from "./components/MovieSearch.js";
 import Details from "./components/Details.js";
+import Nominations from './components/Nominations.js';
 import Config from './config.json';
 import './App.css';
 
@@ -37,11 +38,14 @@ class App extends React.Component {
         </h1>
         <p>Some more lorem ipsum</p>
         <div className="container">
-          <div className = "row">
-              <SearchBox
-                updateDetails = {this.updateDetails}
-                currentSelection = {this.state.currentID}
-              />
+          <div className = "d-flex flex-row-reverse row">
+            <Nominations
+            />
+            <SearchBox
+              updateDetails = {this.updateDetails}
+              currentSelection = {this.state.currentID}
+
+            />
           </div>
           <Details
             toDisplay = {this.state.hasDetails}
