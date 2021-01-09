@@ -20,6 +20,7 @@ class App extends React.Component {
     this.updateDetails = this.updateDetails.bind(this);
     this.addNomination = this.addNomination.bind(this);
     this.clearDetails = this.clearDetails.bind(this);
+    this.removeNomination = this.removeNomination.bind(this);
   }
   clearDetails()
   {
@@ -44,7 +45,19 @@ class App extends React.Component {
       cNoms.push({"imdbID": data["imdbID"], "ImgSrc": data["Poster"], "Title": data["Title"]});
       this.setState({currentNominations: cNoms});
     }
-    console.log(this.state.currentNominations);
+  }
+  async removeNomination(id)
+  {
+    var cNoms = Array.from(this.state.currentNominations);
+    var newNoms = new Array();
+    for (const movie of cNoms)
+    {
+      if(movie["imdbID"] != id)
+      {
+        newNoms.push(movie);
+      }
+    }
+    this.setState({currentNominations: newNoms});
   }
   render()
   {
@@ -59,6 +72,7 @@ class App extends React.Component {
             <Nominations
               updateDetails = {this.updateDetails}
               currentNominations = {this.state.currentNominations}
+              removeNomination = {this.removeNomination}
             />
             <SearchBox
               updateDetails = {this.updateDetails}
@@ -73,6 +87,7 @@ class App extends React.Component {
             currentNominations = {this.state.currentNominations}
             toDisplay = {this.state.hasDetails}
             data = {this.state.data}
+            removeNomination = {this.removeNomination}
           />
         </div>
     </div>

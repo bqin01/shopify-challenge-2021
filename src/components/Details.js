@@ -71,9 +71,9 @@ class NominationButton extends React.Component
       return (
         <button
           className = "nominate-button remove-nominate-button"
-          onClick = {() => null}
+          onClick = {() => this.props.removeNomination(this.props.imdbID)}
         >
-          Already Nominated
+          Remove Nomination
         </button>
       );
     }else if (this.props.currentNominations.length >= 5){
@@ -153,6 +153,7 @@ class Details extends React.Component
             <button className = "imdb-link" onClick = {() => window.open("https://www.imdb.com/title/" + this.props.data["imdbID"], "_blank")}>Learn More on IMDb</button>
             <NominationButton
               addNomination = {this.props.addNomination}
+              removeNomination = {this.props.removeNomination}
               imdbID = {this.props.data["imdbID"]}
               currentNominations = {this.props.currentNominations}
             />
