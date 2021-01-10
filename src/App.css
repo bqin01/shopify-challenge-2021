@@ -158,10 +158,11 @@
   border-radius: 5px;
   position: relative;
   width: 100%;
-  max-width: 160px;
+  max-width: 200px;
   padding-top: 120%;
-  padding-top: min(120%, 192px);
+  padding-top: min(120%, 240px);
   border: 3px dashed gray;
+  background-color: #00000000;
 }
 .nominations
 {
@@ -170,6 +171,12 @@
 .nom-holder
 {
   margin: 1rem 0 1rem 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  min-width: 125px;
+  max-width: 200px;
 }
 .nomination-filled
 {
@@ -188,6 +195,18 @@
   font-size: 25px;
   margin-left: auto;
   margin-right: auto;
+}
+.x-button
+{
+  width: 25px;
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  transition-duration: 0.25s;
+}
+.x-button:hover
+{
+  width: 35px;
 }
 .add-nominate-button
 {

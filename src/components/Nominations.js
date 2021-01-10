@@ -1,5 +1,6 @@
 import React from 'react';
 import NoImage from '../assets/noimage.png';
+import XButton from '../assets/xbutton.png';
 
 class Nom extends React.Component
 {
@@ -9,21 +10,30 @@ class Nom extends React.Component
       {
         var imgsrc = this.props.currentNominations[this.props.nomID]["ImgSrc"]
         return (
-          <div
-            className = "nomination nomination-filled"
-            style = {
-              {
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundImage: `url(${(imgsrc === "N/A" ? NoImage : imgsrc) || NoImage})`
+          <div className = "col-sm-4 nom-holder">
+            <img
+              className = "x-button"
+              src = {XButton}
+              onClick = {() => this.props.removeNomination(this.props.currentNominations[this.props.nomID]["imdbID"])}
+            />
+            <div
+              className = "nomination nomination-filled"
+              style = {
+                {
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
+                  backgroundImage: `url(${(imgsrc === "N/A" ? NoImage : imgsrc) || NoImage})`
+                }
               }
-            }
-          ></div>
+            ></div>
+          </div>
         );
       }else{
         return (
-          <div className = "nomination nomination-empty">
+          <div className = "col-sm-4 nom-holder">
+            <div className = "nomination nomination-empty">
 
+            </div>
           </div>
         );
       }
@@ -39,39 +49,34 @@ class Nominations extends React.Component
         <h2>Your Shoppie Nominations</h2>
         <div className = "nominations container">
           <div className = "row">
-            <div className = "col-sm-4 nom-holder"> {/* Nomination 1 */}
               <Nom
                 currentNominations = {this.props.currentNominations}
+                removeNomination = {this.props.removeNomination}
                 nomID = {0}
               />
-            </div>
-            <div className = "col-sm-4 nom-holder"> {/* Nomination 2 */}
               <Nom
                 currentNominations = {this.props.currentNominations}
+                removeNomination = {this.props.removeNomination}
                 nomID = {1}
               />
-            </div>
-            <div className = "col-sm-4 nom-holder"> {/* Nomination 3 */}
               <Nom
                 currentNominations = {this.props.currentNominations}
+                removeNomination = {this.props.removeNomination}
                 nomID = {2}
               />
-            </div>
           </div>
           <div className = "row">
             <div className = "col-sm-2"></div>
-            <div className = "col-sm-4 nom-holder">  {/* Nomination 4 */}
               <Nom
                 currentNominations = {this.props.currentNominations}
+                removeNomination = {this.props.removeNomination}
                 nomID = {3}
               />
-            </div>
-            <div className = "col-sm-4 nom-holder">  {/* Nomination 5 */}
               <Nom
                 currentNominations = {this.props.currentNominations}
+                removeNomination = {this.props.removeNomination}
                 nomID = {4}
               />
-            </div>
             <div className = "col-sm-2"></div>
           </div>
         </div>
