@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import InteractiveCard from './InteractiveCard.js';
 import SearchIcon from "../assets/search.svg";
-import Config from '../config.json';
 import NoImage from '../assets/noimage.png';
 
 class SearchQuery extends React.Component
@@ -87,7 +86,7 @@ class SearchBox extends React.Component
   {
     const query = document.getElementById("text-query").value;
     if(query.length > 0){
-      var api_key = Config["API_KEY"];
+      var api_key = process.env.REACT_APP_API_KEY;
       const url = `https://www.omdbapi.com/?s=${encodeURI(query)}&type=movie&apikey=${api_key}`; //API KEY LEAK BEWARE
       const response = await fetch(url);
       const data = await response.json();

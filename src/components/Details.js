@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import InteractiveCard from './InteractiveCard.js';
 import NoImage from '../assets/noimage.png';
-import Config from '../config.json';
 import LogoIMBD from '../assets/imdblogo.png';
 import LogoRT from '../assets/rottentomatoes.png';
 import LogoMC from '../assets/metacritic.png';

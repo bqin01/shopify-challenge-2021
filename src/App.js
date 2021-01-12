@@ -6,8 +6,8 @@ import SearchBox from "./components/MovieSearch.js";
 import Details from "./components/Details.js";
 import Nominations from './components/Nominations.js';
 import NomPopup from './components/NomPopup.js';
-import Config from './config.json';
 import './App.css';
+
 
 class App extends React.Component {
   constructor(props)
@@ -40,7 +40,7 @@ class App extends React.Component {
   async updateDetails(id)
   {
     this.unPopup();
-    var api_key = Config["API_KEY"];
+    var api_key = process.env.REACT_APP_API_KEY;
     const url = `https://www.omdbapi.com/?i=${id}&apikey=${api_key}`;
     const response = await fetch(url);
     const data = await response.json();
@@ -52,7 +52,7 @@ class App extends React.Component {
     this.unPopup();
     var cNoms = Array.from(this.state.currentNominations);
     if (cNoms.length < 5){
-      var api_key = Config["API_KEY"];
+      var api_key = process.env.REACT_APP_API_KEY;
       const url = `https://www.omdbapi.com/?i=${id}&apikey=${api_key}`;
       const response = await fetch(url);
       const data = await response.json();
@@ -88,7 +88,7 @@ class App extends React.Component {
     for (var i = 0; i < 5; i++) this.cookies.remove("noms_index_"+i);
     this.cookies.set("num_noms",0);
     for (const cookie_id in arr){
-      var api_key = Config["API_KEY"];
+      var api_key = process.env.REACT_APP_API_KEY;
       const url = `https://www.omdbapi.com/?i=${arr[cookie_id]}&apikey=${api_key}`;
       const response = await fetch(url);
       const data = await response.json();
