@@ -118,7 +118,7 @@ class Details extends React.Component
         }
       }
       return (
-        <div className = "row display">
+        <div className = "row display details-holder">
           <div className = "left-display col-lg-3 container">
             <img
               className = "film-banner"

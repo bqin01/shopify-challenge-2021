@@ -210,13 +210,15 @@
 }
 .add-nominate-button
 {
-
-}
-.inactive-nominate-button
-{
-
 }
 .remove-nominate-button
 {
 
+}
+
+/* OTHERS */
+
+.end-of-doc-div
+{
+  margin-top: 30px;
 }
