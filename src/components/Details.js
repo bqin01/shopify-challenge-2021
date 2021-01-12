@@ -69,7 +69,7 @@ class NominationButton extends React.Component
     {
       return (
         <button
-          className = "nominate-button remove-nominate-button"
+          className = "nominate-button remove-nominate-button border-shadow border-dark"
           onClick = {() => this.props.removeNomination(this.props.imdbID)}
         >
           Remove Nomination
@@ -78,7 +78,7 @@ class NominationButton extends React.Component
     }else if (this.props.currentNominations.length >= 5){
       return (
         <button
-          className = "nominate-button inactive-nominate-button"
+          className = "nominate-button inactive-nominate-button border-shadow border-dark"
           disabled = {true}
         >
           Nominations Full
@@ -87,7 +87,7 @@ class NominationButton extends React.Component
     }else{
       return (
         <button
-          className = "nominate-button add-nominate-button"
+          className = "nominate-button add-nominate-button border-shadow border-dark"
           onClick = {() => this.props.addNomination(this.props.imdbID)}
         >
           Nominate me for Shoppies!
@@ -117,7 +117,7 @@ class Details extends React.Component
         }
       }
       return (
-        <div className = "row display details-holder">
+        <div className = "row display details-holder bg-white border border-shadow mt-3">
           <div className = "left-display col-lg-3 container">
             <img
               className = "film-banner"

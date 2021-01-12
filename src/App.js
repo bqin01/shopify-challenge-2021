@@ -7,6 +7,7 @@ import Details from "./components/Details.js";
 import Nominations from './components/Nominations.js';
 import NomPopup from './components/NomPopup.js';
 import './App.css';
+import './NominationResp.css';
 
 
 class App extends React.Component {
@@ -109,10 +110,13 @@ class App extends React.Component {
             setNominations = {this.setNominations}
             unPopup = {this.unPopup}
         />
+      <div className = "nomination-intro-text">
         <h1 className = "app-header">
-          Lorem Ipsum
+        👑 The 2021 Shoppies 🎥
         </h1>
-        <p>Some more lorem ipsum</p>
+        <h5 className = "app-desc">The Shoppies are back and the competition is as fierce as ever! Get your nominations in!</h5>
+        <div class = "div-line"></div>
+      </div>
         <div className="container">
           <div className = "d-flex flex-row-reverse row">
             <Nominations

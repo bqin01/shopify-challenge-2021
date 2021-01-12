@@ -14,7 +14,6 @@ class SearchQuery extends React.Component
   handleKeyPress(event)
   {
     var charCode = (typeof event.which == "number") ? event.which : event.keyCode;
-    console.log(charCode);
     if (charCode === 13){
       this.props.handler();
     }
@@ -97,7 +96,7 @@ class SearchBox extends React.Component
   render()
   {
     return (
-      <div className = "col-lg-6">
+      <div className = "col-lg-6 pl-0">
         <SearchQuery handler = {this.beginSearch}/>
         <SearchResults
           hasQueried = {this.state.hasQueried}

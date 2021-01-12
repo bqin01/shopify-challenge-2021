@@ -1,17 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+body
+{
+  background-color: rgb(240,240,240);
+  color: #444444;
+}
+
 .faded
 {
   font-style: italic;
   color: #888888;
 }
 
+.border-shadow
+{
+  box-shadow: 0px 0px 10px #DDDDDD;
+}
+
+.border-shadow-green
+{
+  z-index: 1;
+  box-shadow: 0px 0px 30px #7fe17f;
+}
+
+.div-line
+{
+  margin: 25px 0 50px 0;
+  height: 2px;
+  background: rgb(20,20,20);
+background: linear-gradient(90deg, rgba(240,240,240,1) 0%, rgba(20,20,20,1) 50%, rgba(240,240,240,1) 100%);
+}
+
+.card:hover
+{
+  opacity: 50%;
+}
 .card
 {
   border-radius: 5px;
   height: auto;
   overflow: hidden;
+  padding: 0.2em 3px 0.2em 0.5em;
+  transition-duration: 0.5s;
 }
+
 .dropdownManager
 {
   background-color: #EEEEEE;
@@ -26,19 +58,20 @@
   width: auto;
 }
 
-
-
-.card-header:hover
+.app-header
 {
-  opacity: 80%;
+  margin-top: 1em;
 }
-.card-header
+.app-desc
 {
-  border: 2px solid black;
-  background-color: #CCCCCC;
-  padding: 0.2em 3px 0.2em 0.5em;
-  transition-duration: 0.5s;
+  margin-bottom: 2em;
 }
+
+.nomination-intro-text
+{
+  text-align: center;
+}
+
 
 .card-header-nominated
 {
@@ -148,73 +181,7 @@
   padding: 15px;
 }
 
-/* NOMINATIONS */
 
-.nomination
-{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 5px;
-  position: relative;
-  width: 100%;
-  max-width: 200px;
-  padding-top: 120%;
-  padding-top: min(120%, 240px);
-  border: 3px dashed gray;
-  background-color: #00000000;
-}
-.nominations
-{
-  max-width: 600px;
-}
-.nom-holder
-{
-  margin: 1rem 0 1rem 0;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  min-width: 125px;
-  max-width: 200px;
-}
-.nomination-filled
-{
-  border: 3px solid #a25e0b;
-}
-.nomination-empty
-{
-  font-size: 24px;
-}
-.nominate-button
-{
-  margin-top: 20px;
-  display: block;
-  border-radius: 5px;
-  padding: 10px 20px 10px 20px;
-  font-size: 25px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.x-button
-{
-  width: 25px;
-  position: absolute;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-  transition-duration: 0.25s;
-}
-.x-button:hover
-{
-  width: 35px;
-}
-.add-nominate-button
-{
-}
-.remove-nominate-button
-{
-
-}
 
 /* OTHERS */
 

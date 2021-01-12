@@ -17,7 +17,7 @@ class InteractiveCard extends React.Component
 {
   render()
   {
-    var cardClassName = "card-header";
+    var cardClassName = "card bg-white border border-shadow";
     var alreadyNominated = false;
     for (const elem of this.props.currentNominations)
     {
@@ -29,11 +29,11 @@ class InteractiveCard extends React.Component
     }
     if (this.props.imdbID === this.props.currentSelection)
     {
-      cardClassName += " card-header-selected";
+      cardClassName += " border-shadow-green";
     }
     return (
-      <div className = "card">
-        <div className = {cardClassName} onClick = {() => this.props.displayDetails(this.props.imdbID)}>
+      <div className = {cardClassName}>
+        <div onClick = {() => this.props.displayDetails(this.props.imdbID)}>
           <span>
             <span className = "film-title">{this.props.title}</span>
             <span className = "film-year">({this.props.year})</span>
