@@ -15,7 +15,7 @@ class App extends React.Component {
     super(props);
     this.cookies = new Cookies();
     this.state = {
-      checkPopUp: false,
+      checkPopup: false,
       hasDetails: false,
       data: null,
       currentID: null,
@@ -29,12 +29,17 @@ class App extends React.Component {
     this.setNominations = this.setNominations.bind(this);
     this.unPopup = this.unPopup.bind(this);
   }
+  unPopup()
+  {
+    this.setState({checkPopup: true});
+  }
   clearDetails()
   {
     this.setState({hasDetails: false, currentID: null});
   }
   async updateDetails(id)
   {
+    this.unPopup();
     var api_key = Config["API_KEY"];
     const url = `https://www.omdbapi.com/?i=${id}&apikey=${api_key}`;
     const response = await fetch(url);
@@ -44,6 +49,7 @@ class App extends React.Component {
   }
   async addNomination(id)
   {
+    this.unPopup();
     var cNoms = Array.from(this.state.currentNominations);
     if (cNoms.length < 5){
       var api_key = Config["API_KEY"];
@@ -58,6 +64,7 @@ class App extends React.Component {
   }
   removeNomination(id)
   {
+    this.unPopup();
     var cNoms = Array.from(this.state.currentNominations);
     var newNoms = [];
     var newCookies = [];
@@ -76,26 +83,28 @@ class App extends React.Component {
   }
   async setNominations(arr)
   {
+    this.unPopup();
     var cNoms = [];
+    for (var i = 0; i < 5; i++) this.cookies.remove("noms_index_"+i);
+    this.cookies.set("num_noms",0);
     for (const cookie_id in arr){
       var api_key = Config["API_KEY"];
       const url = `https://www.omdbapi.com/?i=${arr[cookie_id]}&apikey=${api_key}`;
       const response = await fetch(url);
       const data = await response.json();
       cNoms.push({"imdbID": data["imdbID"], "ImgSrc": data["Poster"], "Title": data["Title"]});
+      this.cookies.set("noms_index_" + (cNoms.length - 1), arr[cookie_id]);
+      this.cookies.set("num_noms", cNoms.length);
     }
     this.setState({currentNominations: cNoms});
   }
-  unPopup()
-  {
-    this.state.checkPopUp = true;
-  }
+
   render()
   {
     return (
       <div className = "container">
         <NomPopup
-            checkRender = {this.state.checkPopUp}
+            checkRender = {this.state.checkPopup}
             cookies = {this.cookies}
             setNominations = {this.setNominations}
             unPopup = {this.unPopup}
@@ -130,11 +139,6 @@ class App extends React.Component {
         </div>
     </div>
     );
-  }
-
-  componentDidMount()
-  {
-    this.unPopup();
   }
 }
 

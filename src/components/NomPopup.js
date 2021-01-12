@@ -7,13 +7,21 @@ class NomPopup extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {checkRender: this.props.checkRender}
+    this.state = {
+      checkRender: this.props.checkRender
+    };
     this.shouldShow = this.shouldShow.bind(this);
     this.handleShow = this.handleShow.bind(this);
   }
+  componentDidUpdate (prevProps)
+  {
+    if (this.props.checkRender !== this.state.checkRender)
+    {
+      this.setState({checkRender: this.props.checkRender});
+    }
+  }
   shouldShow()
   {
-    console.log(this.state.checkRender);
     return (!this.state.checkRender && (this.props.cookies.get("noms_index_0") !== undefined) && (this.props.cookies.get("num_noms") > 0));
   }
   async handleShow (reload)
