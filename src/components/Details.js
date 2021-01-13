@@ -128,7 +128,7 @@ class Details extends React.Component
   {
     if (this.props.toDisplay !== this.state.isOpen)
     {
-      this.setState({isOpen: this.props.toDisplay}); 
+      this.setState({isOpen: this.props.toDisplay});
     }
   }
   render()
@@ -154,7 +154,7 @@ class Details extends React.Component
       <Modal show = {this.state.isOpen} onHide={this.handleClose} dialogClassName = "details-modal">
         <Modal.Header closeButton>Details for {this.props.data["Title"]}</Modal.Header>
         <Modal.Body>
-          <div className = "row display details-holder bg-white border border-shadow mt-3">
+          <div className = "row display">
             <div className = "left-display col-lg-3 container">
               <img
                 className = "film-banner"

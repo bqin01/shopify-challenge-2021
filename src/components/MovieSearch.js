@@ -9,14 +9,11 @@ class SearchQuery extends React.Component
   constructor(props)
   {
     super(props);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-  handleKeyPress(event)
+  handleChange(event)
   {
-    var charCode = (typeof event.which == "number") ? event.which : event.keyCode;
-    if (charCode === 13){
-      this.props.handler();
-    }
+    this.props.handler();
   }
   render()
   {
@@ -27,7 +24,8 @@ class SearchQuery extends React.Component
             type="text" placeholder="Search"
             aria-label="Search"
             id = "text-query"
-            onKeyPress = {this.handleKeyPress}>
+            onChange = {this.handleChange}
+          >
           </input>
           <div className="input-group-append" onClick = {this.props.handler}>
             <span className ="input-group-text height-cap"><img alt = "Search" src = {SearchIcon}
@@ -67,8 +65,10 @@ class SearchResults extends React.Component
             </div>
           );
       }
+    }else if (this.props.isSearching){
+        return <div><p>Searching...</p></div>
     }else{
-        return null;
+      return <div><p>Your search results will appear here.</p></div>
     }
   }
 }
@@ -78,20 +78,33 @@ class SearchBox extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = ({hasQueried: false, query: "", queryResults: ""});
+    this.state = ({hasQueried: false, isSearching: false, query: "", queryResults: ""});
     this.beginSearch = this.beginSearch.bind(this);
   }
   async beginSearch()
   {
+    this.setState({isSearching: true, hasQueried: false});
     const query = document.getElementById("text-query").value;
-    if(query.length > 0){
-      var api_key = process.env.REACT_APP_API_KEY;
-      const url = `https://www.omdbapi.com/?s=${encodeURI(query)}&type=movie&apikey=${api_key}`; //API KEY LEAK BEWARE
-      const response = await fetch(url);
-      const data = await response.json();
-      this.setState({hasQueried: true, query: query, queryResults: data});
-      this.props.clearDetails();
-    }
+    let searchPromise = new Promise(resp => setTimeout(resp,500));
+    searchPromise.then(
+      async function(val){
+        const query2 = document.getElementById("text-query").value;
+        if(query2 === query){
+          if(query.length > 0){
+            var api_key = process.env.REACT_APP_API_KEY;
+            const url = `https://www.omdbapi.com/?s=${encodeURI(query)}&type=movie&apikey=${api_key}`; //API KEY LEAK BEWARE
+            const response = await fetch(url);
+            const data = await response.json();
+            this.setState({hasQueried: true, isSearching: false, query: query, queryResults: data});
+            this.props.clearDetails();
+          }else{
+            this.setState({hasQueried: false, isSearching: false, query: "", queryResults: null});
+          }
+        }
+      }.bind(this)
+    ).catch(
+      (reason) => console.log("Failed promise fulfillment: " + query + " for reason " + reason)
+    );
   }
   render()
   {
@@ -99,6 +112,7 @@ class SearchBox extends React.Component
       <div className = "col-lg-6 pl-0">
         <SearchQuery handler = {this.beginSearch}/>
         <SearchResults
+          isSearching = {this.state.isSearching}
           hasQueried = {this.state.hasQueried}
           query = {this.state.query}
           queryResults = {this.state.queryResults}
