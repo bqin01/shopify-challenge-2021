@@ -41,12 +41,17 @@ class App extends React.Component {
   async updateDetails(id)
   {
     this.unPopup();
-    var api_key = process.env.REACT_APP_API_KEY;
-    const url = `https://www.omdbapi.com/?i=${id}&apikey=${api_key}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({hasDetails: true, data: data, currentID: id});
-    this.endOfDoc.current.scrollIntoView({behavior: "smooth"});
+    if (id){
+      var api_key = process.env.REACT_APP_API_KEY;
+      const url = `https://www.omdbapi.com/?i=${id}&apikey=${api_key}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      this.setState({hasDetails: true, data: data, currentID: id});
+      this.endOfDoc.current.scrollIntoView({behavior: "smooth"});
+    }else{
+      this.setState({hasDetails: false, data: null, currentID: null});
+      console.log("OK");
+    }
   }
   async addNomination(id)
   {
@@ -138,6 +143,7 @@ class App extends React.Component {
             toDisplay = {this.state.hasDetails}
             data = {this.state.data}
             removeNomination = {this.removeNomination}
+            updateDetails = {this.updateDetails}
           />
         <div ref = {this.endOfDoc} className = "end-of-doc-div"></div>
         </div>
