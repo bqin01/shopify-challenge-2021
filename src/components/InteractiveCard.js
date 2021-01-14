@@ -35,6 +35,7 @@ class AddOrRemove extends React.Component
         >
           <div
             className = "quick-change-button"
+            style = {{cursor: "pointer"}}
             onClick = {() => this.props.removeNomination(this.props.imdbID)}
           >
             <img
@@ -76,6 +77,7 @@ class AddOrRemove extends React.Component
         >
           <div
             className = "quick-change-button"
+            style = {{cursor: "pointer"}}
             onClick = {() => this.props.addNomination(this.props.imdbID)}
           >
             <img
@@ -105,7 +107,11 @@ class InteractiveCard extends React.Component
     }
     return (
       <div className = {cardClassName}>
-        <div onClick = {() => this.props.displayDetails(this.props.imdbID)} className = "card-get-details">
+        <div
+          onClick = {() => this.props.displayDetails(this.props.imdbID)}
+          className = "card-get-details"
+          style = {{cursor: "pointer"}}
+        >
           <span>
             <span className = "film-title">{this.props.title}</span>
             <span className = "film-year">({this.props.year})</span>

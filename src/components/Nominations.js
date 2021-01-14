@@ -21,11 +21,13 @@ class Nom extends React.Component
               className = "nomination nomination-filled"
               style = {
                 {
+                  cursor: "pointer",
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   backgroundImage: `url(${(imgsrc === "N/A" ? NoImage : imgsrc) || NoImage})`
                 }
               }
+              onClick = {() => this.props.updateDetails(this.props.currentNominations[this.props.nomID]["imdbID"])}
             ></div>
           </div>
         );
@@ -72,16 +74,19 @@ class Nominations extends React.Component
               <Nom
                 currentNominations = {this.props.currentNominations}
                 removeNomination = {this.props.removeNomination}
+                updateDetails = {this.props.updateDetails}
                 nomID = {0}
               />
               <Nom
                 currentNominations = {this.props.currentNominations}
                 removeNomination = {this.props.removeNomination}
+                updateDetails = {this.props.updateDetails}
                 nomID = {1}
               />
               <Nom
                 currentNominations = {this.props.currentNominations}
                 removeNomination = {this.props.removeNomination}
+                updateDetails = {this.props.updateDetails}
                 nomID = {2}
               />
           </div>
@@ -90,11 +95,13 @@ class Nominations extends React.Component
               <Nom
                 currentNominations = {this.props.currentNominations}
                 removeNomination = {this.props.removeNomination}
+                updateDetails = {this.props.updateDetails}
                 nomID = {3}
               />
               <Nom
                 currentNominations = {this.props.currentNominations}
                 removeNomination = {this.props.removeNomination}
+                updateDetails = {this.props.updateDetails}
                 nomID = {4}
               />
             <div className = "col-sm-2"></div>
