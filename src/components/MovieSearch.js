@@ -3,6 +3,8 @@ import React from 'react';
 import InteractiveCard from './InteractiveCard.js';
 import SearchIcon from "../assets/search.svg";
 import NoImage from '../assets/noimage.png';
+import NoSearch from '../assets/searchimgs/filmsearch.png';
+import SearchError from '../assets/searchimgs/exclamation.png';
 
 class SearchQuery extends React.Component
 {
@@ -60,15 +62,31 @@ class SearchResults extends React.Component
         return (<div> {cards} </div>);
       }else{
          return (
-            <div>
-              <p>Your query returned no results for the following reason: {this.props.queryResults["Error"]} </p>
-            </div>
+           <div className = "search-result-holder">
+             <img
+               className = "search-result-img"
+               src = {SearchError}
+             />
+           <p className = "search-result-text">{this.props.queryResults["Error"]}</p>
+           </div>
           );
       }
     }else if (this.props.isSearching){
-        return <div><p>Searching...</p></div>
+        return (
+          <div className = "search-result-holder">
+            <p className = "search-result-text">Searching...</p>
+          </div>
+        );
     }else{
-      return <div><p>Your search results will appear here.</p></div>
+      return (
+        <div className = "search-result-holder">
+          <img
+            className = "search-result-img"
+            src = {NoSearch}
+          />
+          <p className = "search-result-text">Your search results will appear here.</p>
+        </div>
+      );
     }
   }
 }
@@ -83,28 +101,28 @@ class SearchBox extends React.Component
   }
   async beginSearch()
   {
-    this.setState({isSearching: true, hasQueried: false});
     const query = document.getElementById("text-query").value;
-    let searchPromise = new Promise(resp => setTimeout(resp,500));
-    searchPromise.then(
-      async function(val){
-        const query2 = document.getElementById("text-query").value;
-        if(query2 === query){
-          if(query.length > 0){
-            var api_key = process.env.REACT_APP_API_KEY;
-            const url = `https://www.omdbapi.com/?s=${encodeURI(query)}&type=movie&apikey=${api_key}`; //API KEY LEAK BEWARE
-            const response = await fetch(url);
-            const data = await response.json();
-            this.setState({hasQueried: true, isSearching: false, query: query, queryResults: data});
-            this.props.clearDetails();
-          }else{
-            this.setState({hasQueried: false, isSearching: false, query: "", queryResults: null});
+    if (query.length > 0){
+      this.setState({isSearching: true, hasQueried: false});
+      let searchPromise = new Promise(resp => setTimeout(resp,500));
+      searchPromise.then(
+        async function(val){
+          const query2 = document.getElementById("text-query").value;
+          if(query2 === query){
+              var api_key = process.env.REACT_APP_API_KEY;
+              const url = `https://www.omdbapi.com/?s=${encodeURI(query)}&type=movie&apikey=${api_key}`; //API KEY LEAK BEWARE
+              const response = await fetch(url);
+              const data = await response.json();
+              this.setState({hasQueried: true, isSearching: false, query: query, queryResults: data});
+              this.props.clearDetails();
           }
-        }
-      }.bind(this)
-    ).catch(
-      (reason) => console.log("Failed promise fulfillment: " + query + " for reason " + reason)
-    );
+        }.bind(this)
+      ).catch(
+        (reason) => null
+      );
+    }else{
+      this.setState({hasQueried: false, isSearching: false, query: "", queryResults: null});
+    }
   }
   render()
   {

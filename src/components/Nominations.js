@@ -45,7 +45,7 @@ class Nominations extends React.Component
   render ()
   {
     return (
-      <div className = "col-lg-6 rounded border-shadow nominations-olympics">
+      <div className = "col-lg-6 rounded border-shadow nominations-olympics mb-4">
         <h3 className = "my-3 text-center">Your Shoppie Nominations</h3>
         <div className = "my-3 nominations container">
           <div className = "row">

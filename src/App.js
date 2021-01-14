@@ -47,10 +47,8 @@ class App extends React.Component {
       const response = await fetch(url);
       const data = await response.json();
       this.setState({hasDetails: true, data: data, currentID: id});
-      this.endOfDoc.current.scrollIntoView({behavior: "smooth"});
     }else{
       this.setState({hasDetails: false, data: null, currentID: null});
-      console.log("OK");
     }
   }
   async addNomination(id)
@@ -145,7 +143,6 @@ class App extends React.Component {
             removeNomination = {this.removeNomination}
             updateDetails = {this.updateDetails}
           />
-        <div ref = {this.endOfDoc} className = "end-of-doc-div"></div>
         </div>
     </div>
     );

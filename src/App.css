@@ -189,3 +189,19 @@ background: linear-gradient(90deg, rgba(240,240,240,1) 0%, rgba(20,20,20,1) 50%,
 {
   margin-top: 30px;
 }
+
+.search-result-holder
+{
+  padding: 3em;
+  text-align: center;
+}
+.search-result-img
+{
+  width: 33%;
+}
+.search-result-text
+{
+  color: #BBBBBB;
+  font-size: 24px;
+  font-weight: 500;
+}
