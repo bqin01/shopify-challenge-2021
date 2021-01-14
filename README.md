@@ -2,7 +2,7 @@
 # Shoppies 2021
 
 This is my submission for the UX Developer Intern & Web Developer Intern Challenge
-for Summer 2021. The demo is hosted on Heroku and is available [here](https://shopify-challenge-2021.herokuapp.com/) The site may time out due to Heroku's allocation of memory and uncaching of inactive apps. In this case, refreshing the page will often resolve this issue.
+for Summer 2021. The demo is hosted on Heroku and is available [here](https://shopify-challenge-2021.herokuapp.com/). The site may time out due to Heroku's allocation of memory and uncaching of inactive apps. In this case, refreshing the page will often resolve this issue.
 
 ## What is this?
 
