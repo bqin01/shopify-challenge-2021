@@ -105,21 +105,12 @@ class InteractiveCard extends React.Component
     }
     return (
       <div className = {cardClassName}>
-        <OverlayTrigger
-          placement = "right"
-          overlay = {
-            (props) => (
-              <Tooltip {...props}>Click me for more info!</Tooltip>
-            )
-          }
-        >
-          <div onClick = {() => this.props.displayDetails(this.props.imdbID)} className = "card-get-details">
-            <span>
-              <span className = "film-title">{this.props.title}</span>
-              <span className = "film-year">({this.props.year})</span>
-            </span>
-          </div>
-        </OverlayTrigger>
+        <div onClick = {() => this.props.displayDetails(this.props.imdbID)} className = "card-get-details">
+          <span>
+            <span className = "film-title">{this.props.title}</span>
+            <span className = "film-year">({this.props.year})</span>
+          </span>
+        </div>
         <AddOrRemove
           isMinus = {alreadyNominated}
           isFull = {this.props.currentNominations.length === 5}

@@ -61,7 +61,12 @@ class SearchResults extends React.Component
             />
           );
         });
-        return (<div> {cards} </div>);
+        return (
+          <div className = "my-3">
+            <p className = "search-result-text">Click a film for more info!</p>
+           {cards}
+          </div>
+       );
       }else{
          return (
            <div className = "search-result-holder">
