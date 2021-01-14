@@ -31,19 +31,6 @@ body
 background: linear-gradient(90deg, rgba(240,240,240,1) 0%, rgba(20,20,20,1) 50%, rgba(240,240,240,1) 100%);
 }
 
-.card:hover
-{
-  opacity: 50%;
-}
-.card
-{
-  border-radius: 5px;
-  height: auto;
-  overflow: hidden;
-  padding: 0.2em 3px 0.2em 0.5em;
-  transition-duration: 0.5s;
-}
-
 .dropdownManager
 {
   background-color: #EEEEEE;
@@ -204,4 +191,31 @@ background: linear-gradient(90deg, rgba(240,240,240,1) 0%, rgba(20,20,20,1) 50%,
   color: #BBBBBB;
   font-size: 24px;
   font-weight: 500;
+}
+
+
+.card-get-details:hover, .quick-change-button:hover, .quick-change-button-disabled
+{
+  opacity: 40%;
+}
+.card
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  height: auto;
+  overflow: hidden;
+  padding: 0.2em 3px 0.2em 0.5em;
+  transition-duration: 0.5s;
+}
+
+.quick-change-img
+{
+  width: 40px;
+}
+.quick-change-button, .card-get-details
+{
+  transition-duration: 0.5s;
 }

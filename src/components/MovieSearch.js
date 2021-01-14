@@ -56,6 +56,8 @@ class SearchResults extends React.Component
               displayDetails = {this.props.updateDetails}
               currentSelection = {this.props.currentSelection}
               currentNominations = {this.props.currentNominations}
+              addNomination = {this.props.addNomination}
+              removeNomination = {this.props.removeNomination}
             />
           );
         });
@@ -137,6 +139,8 @@ class SearchBox extends React.Component
           updateDetails = {this.props.updateDetails}
           currentSelection = {this.props.currentSelection}
           currentNominations = {this.props.currentNominations}
+          addNomination = {this.props.addNomination}
+          removeNomination = {this.props.removeNomination}
         />
       </div>
     );

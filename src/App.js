@@ -131,6 +131,7 @@ class App extends React.Component {
             <SearchBox
               updateDetails = {this.updateDetails}
               addNomination = {this.addNomination}
+              removeNomination = {this.removeNomination}
               clearDetails = {this.clearDetails}
               currentSelection = {this.state.currentID}
               currentNominations = {this.state.currentNominations}
