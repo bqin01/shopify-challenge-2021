@@ -7,6 +7,7 @@ import LogoRT from '../assets/rottentomatoes.png';
 import LogoMC from '../assets/metacritic.png';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 /**
 Sample details, this.props.data
@@ -115,7 +116,7 @@ class Details extends React.Component
   {
     super(props);
     this.state = {
-      isOpen: this.props.toDisplay
+      isOpen: this.props.isDisplay
     }
     this.handleClose = this.handleClose.bind(this);
   }
@@ -126,14 +127,13 @@ class Details extends React.Component
   }
   componentDidUpdate (prevProps)
   {
-    if (this.props.toDisplay !== this.state.isOpen)
+    if (this.props.isDisplay !== this.state.isOpen)
     {
-      this.setState({isOpen: this.props.toDisplay});
+      this.setState({isOpen: this.props.isDisplay});
     }
   }
   render()
   {
-    console.log(this.props.toDisplay);
     if (this.props.toDisplay){
       var ratings = ["N/A", "N/A", "N/A"];
       for (var i in this.props.data["Ratings"])
@@ -149,58 +149,67 @@ class Details extends React.Component
           ratings[id] = this.props.data["Ratings"][i]["Value"];
         }
       }
-      console.log("Open: " + this.state.isOpen);
-    return (
-      <Modal show = {this.state.isOpen} onHide={this.handleClose} dialogClassName = "details-modal">
-        <Modal.Header closeButton>Details for {this.props.data["Title"]}</Modal.Header>
-        <Modal.Body>
-          <div className = "row display">
-            <div className = "left-display col-lg-3 container">
-              <img
-                className = "film-banner"
-                alt = {"Poster for " + this.props.data["Title"]}
-                src = {(this.props.data["Poster"] === "N/A" ? NoImage : this.props.data["Poster"]) || NoImage}
-              />
-              <div className = "ratings row">
-                <div className = "rating rating-vert col-sm-6">
-                  <img alt = "IMBD" src = {LogoIMBD}/>
-                  <span>{ratings[0] === "N/A" ? this.props.data["imdbRating"] : ratings[0]}</span>
-                </div>
-                <div className = "col-sm-6">
-                  <div className = "rating rating-hori">
-                    <img alt = "Rotten Tomatoes" src = {LogoRT}/>
-                    <span>{ratings[1]}</span>
+      return (
+        <Modal show = {this.state.isOpen} onHide={this.handleClose} dialogClassName = "details-modal">
+          <Modal.Header closeButton>Details for {this.props.data["Title"]}</Modal.Header>
+          <Modal.Body>
+            <div className = "row display">
+              <div className = "left-display col-lg-3 container">
+                <img
+                  className = "film-banner"
+                  alt = {"Poster for " + this.props.data["Title"]}
+                  src = {(this.props.data["Poster"] === "N/A" ? NoImage : this.props.data["Poster"]) || NoImage}
+                />
+                <div className = "ratings row">
+                  <div className = "rating rating-vert col-sm-6">
+                    <img alt = "IMBD" src = {LogoIMBD}/>
+                    <span>{ratings[0] === "N/A" ? this.props.data["imdbRating"] : ratings[0]}</span>
                   </div>
-                  <div className = "rating rating-hori">
-                    <img alt = "Metacritic" src = {LogoMC}/>
-                    <span>{ratings[2]}</span>
+                  <div className = "col-sm-6">
+                    <div className = "rating rating-hori">
+                      <img alt = "Rotten Tomatoes" src = {LogoRT}/>
+                      <span>{ratings[1]}</span>
+                    </div>
+                    <div className = "rating rating-hori">
+                      <img alt = "Metacritic" src = {LogoMC}/>
+                      <span>{ratings[2]}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className = "right-display col-lg-9">
-              <span>
-                <span className = "film-title">{this.props.data["Title"]}</span>
-                <span className = "film-year">({this.props.data["Year"]})</span>
-              </span>
-              <Director director = {this.props.data["Director"]}/>
-              <Plot plot = {this.props.data["Plot"]}/>
-              <Awards awards = {this.props.data["Awards"]}/>
+              <div className = "right-display col-lg-9">
+                <span>
+                  <span className = "film-title">{this.props.data["Title"]}</span>
+                  <span className = "film-year">({this.props.data["Year"]})</span>
+                </span>
+                <Director director = {this.props.data["Director"]}/>
+                <Plot plot = {this.props.data["Plot"]}/>
+                <Awards awards = {this.props.data["Awards"]}/>
 
+              </div>
             </div>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className = "imdb-link" onClick = {() => window.open("https://www.imdb.com/title/" + this.props.data["imdbID"], "_blank")}>Learn More on IMDb</Button>
-          <NominationButton
-            addNomination = {this.props.addNomination}
-            removeNomination = {this.props.removeNomination}
-            imdbID = {this.props.data["imdbID"]}
-            currentNominations = {this.props.currentNominations}
-            updateDetails = {this.props.updateDetails}
-          />
-        </Modal.Footer>
-      </Modal>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button className = "imdb-link" onClick = {() => window.open("https://www.imdb.com/title/" + this.props.data["imdbID"], "_blank")}>Learn More on IMDb</Button>
+            <NominationButton
+              addNomination = {this.props.addNomination}
+              removeNomination = {this.props.removeNomination}
+              imdbID = {this.props.data["imdbID"]}
+              currentNominations = {this.props.currentNominations}
+              updateDetails = {this.props.updateDetails}
+            />
+          </Modal.Footer>
+        </Modal>
+        );
+    }else if (this.props.isDisplay){
+      return (
+        <Modal show = {this.state.isOpen} onHide={this.handleClose} dialogClassName = "details-modal">
+          <Modal.Header closeButton>Details Loading...</Modal.Header>
+          <Modal.Body className = "text-center">
+            <Spinner animation="border" role = "loading" className = "details-spinner flex-center my-5">
+            </Spinner>
+          </Modal.Body>
+        </Modal>
       );
     }else{
       return null;

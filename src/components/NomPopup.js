@@ -44,7 +44,7 @@ class NomPopup extends React.Component
   render ()
   {
     return (
-      <Modal show = {this.shouldShow()}>
+      <Modal show = {this.shouldShow()} onHide={() => this.handleShow(false)} backdrop="static" centered>
         <Modal.Header closeButton>Shoppies in Progress</Modal.Header>
         <Modal.Body>We noticed that you had nominations before you navigated out of this page. Would you like to continue where you left off?</Modal.Body>
         <Modal.Footer>

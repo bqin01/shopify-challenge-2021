@@ -17,6 +17,7 @@ class App extends React.Component {
     this.cookies = new Cookies();
     this.state = {
       checkPopup: false,
+      calledDetails: false,
       hasDetails: false,
       data: null,
       currentID: null,
@@ -42,13 +43,14 @@ class App extends React.Component {
   {
     this.unPopup();
     if (id){
+      this.setState({calledDetails: true});
       var api_key = process.env.REACT_APP_API_KEY;
       const url = `https://www.omdbapi.com/?i=${id}&apikey=${api_key}`;
       const response = await fetch(url);
       const data = await response.json();
       this.setState({hasDetails: true, data: data, currentID: id});
     }else{
-      this.setState({hasDetails: false, data: null, currentID: null});
+      this.setState({hasDetails: false, calledDetails: false, data: null, currentID: null});
     }
   }
   async addNomination(id)
@@ -137,6 +139,7 @@ class App extends React.Component {
           <Details
             addNomination = {this.addNomination}
             currentNominations = {this.state.currentNominations}
+            isDisplay = {this.state.calledDetails}
             toDisplay = {this.state.hasDetails}
             data = {this.state.data}
             removeNomination = {this.removeNomination}
