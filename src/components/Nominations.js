@@ -1,6 +1,7 @@
 import React from 'react';
 import NoImage from '../assets/noimage.png';
 import XButton from '../assets/xbutton.png';
+import Alert from 'react-bootstrap/Alert';
 
 class Nom extends React.Component
 {
@@ -40,13 +41,32 @@ class Nom extends React.Component
   }
 }
 
+class CompletedAlert extends React.Component
+{
+  render ()
+  {
+    if (this.props.toShow)
+    {
+      return (
+        <Alert variant = "success">
+🎉 Your nominations are completed! 🎉
+</Alert>
+      );
+    }else{
+      return null;
+    }
+  }
+}
+
 class Nominations extends React.Component
 {
   render ()
   {
+    const classAdd = (this.props.currentNominations.length < 5 ? "" : " nominations-olympics-filled")
     return (
-      <div className = "col-lg-6 rounded border-shadow nominations-olympics mb-4">
+      <div className = {"col-lg-6 rounded border-shadow nominations-olympics mb-4" + classAdd}>
         <h3 className = "my-3 text-center">Your Shoppie Nominations</h3>
+        <CompletedAlert toShow = {this.props.currentNominations.length === 5}></CompletedAlert>
         <div className = "my-3 nominations container">
           <div className = "row">
               <Nom

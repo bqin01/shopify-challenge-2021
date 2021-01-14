@@ -77,8 +77,7 @@ class App extends React.Component {
       if(movie["imdbID"] !== id)
       {
         newNoms.push(movie);
-        newCookies.push(movie["imdbID"]);
-        this.cookies.set("noms_index_" + (newNoms.length - 1), id);
+        this.cookies.set("noms_index_" + (newNoms.length - 1), movie["imdbID"]);
       }
     }
     this.cookies.set("num_noms",newNoms.length);

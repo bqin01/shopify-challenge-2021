@@ -1,6 +1,14 @@
 .nominations-olympics
 {
   background-color: #c5f1c5;
+  transition-duration: 0.5s;
+}
+.nominations-olympics-filled
+{
+  border: 2px solid #a25e0b;
+  color: #EEEEEE;
+  background: rgb(52,12,70);
+  background: linear-gradient(117deg, rgba(52,12,70,1) 0%, rgba(129,53,160,1) 50%, rgba(49,9,62,1) 100%);
 }
 
 /* NOMINATIONS */
