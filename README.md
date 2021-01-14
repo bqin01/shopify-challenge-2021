@@ -1,70 +1,39 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Shoppies 2021
 
-## Available Scripts
+This is my submission for the UX Developer Intern & Web Developer Intern Challenge
+for Summer 2021. The demo is hosted on Heroku and is available [here](https://shopify-challenge-2021.herokuapp.com/) The site may time out due to Heroku's allocation of memory and uncaching of inactive apps. In this case, refreshing the page will often resolve this issue.
 
-In the project directory, you can run:
+## What is this?
 
-### `yarn start`
+Shopify has recently branched out in the movie award shows business, and this app
+allows users to create their own set of 5 movies from the OMDB as their nominations.
+This interface allows users to search the database and then add/remove nominations through an intuitive UI.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies
+This application uses the following technologies. Check out the [package.json](https://github.com/bqin01/shopify-challenge-2021/blob/master/package.json) file for more details on dependencies.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ - React (create-react-app and Yarn)
+ - Bootstrap 4
 
-### `yarn test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Key Features
 
-### `yarn build`
+ - Search for movies through OMDB's API, returning and displaying helpful messages on bad queries
+ - View details of each movie in a modal, such as director, plot, and other nominations
+ - Add/remove nominations inside the details modal and outside of it.
+ - Uses cookies to save users' nominations and creates a modal on load giving users the option to continue where they left off or start anew
+ - Changes nominations section upon reaching 5 (max) nominations
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Subtle Features/Development Choices
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Searches happen automatically when the search query changes. To avoid overloading the OMBD API (especially with the daily limit), there is a buffer time of 0.5 seconds when the search query changes so as to not make calls to the API whilst typing.
+- The API key is stored as an environment variable and is excluded from the repository
+- Details modal is loaded ahead of the asynchronous calls to the API with a spinner in place until the promise is fulfilled
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### To-dos/Other Potential Features
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The changing of the "olympics" style of nomination display to list style for smaller devices through the @media rule
+- The ability to share nominations with others through a query string on the URL
+- Aria labels and other modern accessibility features
