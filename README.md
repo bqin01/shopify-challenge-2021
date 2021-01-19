@@ -10,6 +10,8 @@ Shopify has recently branched out in the movie award shows business, and this ap
 allows users to create their own set of 5 movies from the OMDB as their nominations.
 This interface allows users to search the database and then add/remove nominations through an intuitive UI.
 
+See [here](https://docs.google.com/document/d/1AZO0BZwn1Aogj4f3PDNe1mhq8pKsXZxtrG--EIbP_-w/edit#) for the challenge description.
+
 ## Technologies
 This application uses the following technologies. Check out the [package.json](https://github.com/bqin01/shopify-challenge-2021/blob/master/package.json) file for more details on dependencies.
 
